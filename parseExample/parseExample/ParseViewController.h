@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "parseBrain.h"
 
 @interface ParseViewController : UIViewController
+
+{
+    
+    parseBrain * Brain;
+    IBOutlet UITextField * textField;
+}
+@property IBOutlet UITextField * textField;
+
+- (parseBrain *)Brain;
+- (IBAction)saveButton:(UIButton *)sender;
+- (IBAction)getButton:(UIButton *)sender;
+- (IBAction)deleteButton:(UIButton *)sender;
+- (IBAction)comeButton:(UIButton *)sender;
 
 @end

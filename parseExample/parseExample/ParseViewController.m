@@ -13,17 +13,44 @@
 @end
 
 @implementation ParseViewController
+@synthesize textField;
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+- (parseBrain *)Brain{
+    
+    if(!Brain){
+        Brain = [[parseBrain alloc] init];
+    }
+    
+    return Brain;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(IBAction)saveButton:(UIButton *)sender{
+    [self Brain];
+    [Brain parseSave];
+    
 }
+
+- (IBAction)getButton:(UIButton *)sender{
+    [self Brain];
+    [Brain getParseData];
+    
+}
+
+- (IBAction)deleteButton:(UIButton *)sender{
+    [self Brain];
+    [Brain deleteParseData];
+    
+}
+- (void)comeButton:(UIButton *)sender{
+    [self Brain];
+    
+    [Brain getParseDataWithName:textField.text];
+    
+    
+}
+
 
 @end
+

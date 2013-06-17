@@ -31,7 +31,7 @@
 - (void)getParseData{
     
     PFQuery *query = [PFQuery queryWithClassName:@"GameScore"];
-    [query getObjectInBackgroundWithId:@"udZC5x39st" block:^(PFObject *gameScore, NSError *error) {
+    [query getObjectInBackgroundWithId:@"WBALBxPt8b" block:^(PFObject *gameScore, NSError *error) {
         // Do something with the returned PFObject in the gameScore variable.
         NSLog(@"%@", gameScore);
     }];
@@ -40,7 +40,7 @@
 - (void)deleteParseData{
     
     PFQuery *query = [PFQuery queryWithClassName:@"GameScore"];
-    [query getObjectInBackgroundWithId:@"J07gF2UN4b" block:^(PFObject *gameScore, NSError *error) {
+    [query getObjectInBackgroundWithId:@"V1wt3vAHFg" block:^(PFObject *gameScore, NSError *error) {
         // Do something with the returned PFObject in the gameScore variable.
        // NSLog(@"%@", gameScore);
         [gameScore deleteInBackground];
