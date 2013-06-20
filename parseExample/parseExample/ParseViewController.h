@@ -12,12 +12,12 @@
 @interface ParseViewController : UIViewController
 
 {
-    
     parseBrain * Brain;
     IBOutlet UITextField * textField;
 }
 @property IBOutlet UITextField * textField;
-
+@property NSArray *dataArray;
+@property NSArray *dataForKey;
 - (parseBrain *)Brain;
 - (IBAction)saveButton:(UIButton *)sender;
 - (IBAction)getButton:(UIButton *)sender;

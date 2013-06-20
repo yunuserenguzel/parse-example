@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 arif kaplan. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
-#import "Parse/Parse.h"
+
+#import <Parse/Parse.h>
 
 @interface parseBrain : NSObject
 {
@@ -19,4 +21,10 @@
 - (void)getParseData;
 - (void)deleteParseData;
 - (void)getParseDataWithName:(NSString*)name;
+
+- (NSArray *)getData:(NSArray *)data;
+- (void)saveData:(NSArray *)data whichFieldName:(NSArray *)dataForKey;
+- (void)updateData:(NSArray *)data where:(NSArray *)whereData;
+- (void)deleteData:(NSArray *)whereData;
+
 @end

@@ -21,9 +21,6 @@
 		801361AD176F9EAA00307671 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361AC176F9EAA00307671 /* SenTestingKit.framework */; };
 		801361AE176F9EAA00307671 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80136188176F9EA900307671 /* UIKit.framework */; };
 		801361AF176F9EAA00307671 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8013618A176F9EA900307671 /* Foundation.framework */; };
-		801361B7176F9EAA00307671 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 801361B5176F9EAA00307671 /* InfoPlist.strings */; };
-		801361BA176F9EAA00307671 /* parseExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 801361B9176F9EAA00307671 /* parseExampleTests.m */; };
-		801361C4176F9EE100307671 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361C3176F9EE100307671 /* Parse.framework */; };
 		801361C7176F9F7000307671 /* parseBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 801361C6176F9F7000307671 /* parseBrain.m */; };
 		801361C8176F9F7000307671 /* parseBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 801361C6176F9F7000307671 /* parseBrain.m */; };
 		801361CA176FA41800307671 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361C9176FA41800307671 /* AudioToolbox.framework */; };
@@ -35,6 +32,7 @@
 		801361D6176FA52000307671 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361D5176FA52000307671 /* Security.framework */; };
 		801361D8176FA52C00307671 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361D7176FA52C00307671 /* StoreKit.framework */; };
 		801361DA176FA53700307671 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361D9176FA53700307671 /* SystemConfiguration.framework */; };
+		80F615301772FDF8008CBDC0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F6152F1772FDF8008CBDC0 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,11 +64,6 @@
 		801361A4176F9EA900307671 /* ParseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseViewController.m; sourceTree = "<group>"; };
 		801361AB176F9EAA00307671 /* parseExampleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = parseExampleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		801361AC176F9EAA00307671 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		801361B4176F9EAA00307671 /* parseExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "parseExampleTests-Info.plist"; sourceTree = "<group>"; };
-		801361B6176F9EAA00307671 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		801361B8176F9EAA00307671 /* parseExampleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parseExampleTests.h; sourceTree = "<group>"; };
-		801361B9176F9EAA00307671 /* parseExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = parseExampleTests.m; sourceTree = "<group>"; };
-		801361C3176F9EE100307671 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../../Quiz/Parse.framework; sourceTree = "<group>"; };
 		801361C5176F9F7000307671 /* parseBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parseBrain.h; sourceTree = "<group>"; };
 		801361C6176F9F7000307671 /* parseBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parseBrain.m; sourceTree = "<group>"; };
 		801361C9176FA41800307671 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -82,6 +75,7 @@
 		801361D5176FA52000307671 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		801361D7176FA52C00307671 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		801361D9176FA53700307671 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		80F6152F1772FDF8008CBDC0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +95,7 @@
 				801361CA176FA41800307671 /* AudioToolbox.framework in Frameworks */,
 				80136189176F9EA900307671 /* UIKit.framework in Frameworks */,
 				8013618B176F9EA900307671 /* Foundation.framework in Frameworks */,
-				801361C4176F9EE100307671 /* Parse.framework in Frameworks */,
+				80F615301772FDF8008CBDC0 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,17 +115,7 @@
 		8013617C176F9EA900307671 = {
 			isa = PBXGroup;
 			children = (
-				801361D9176FA53700307671 /* SystemConfiguration.framework */,
-				801361D7176FA52C00307671 /* StoreKit.framework */,
-				801361D5176FA52000307671 /* Security.framework */,
-				801361D3176FA51200307671 /* QuartzCore.framework */,
-				801361D1176FA4FD00307671 /* MobileCoreServices.framework */,
-				801361CF176FA4EF00307671 /* libz.1.1.3.dylib */,
-				801361CD176FA4D900307671 /* CoreLocation.framework */,
-				801361CB176FA42D00307671 /* CFNetwork.framework */,
-				801361C9176FA41800307671 /* AudioToolbox.framework */,
 				8013618E176F9EA900307671 /* parseExample */,
-				801361B2176F9EAA00307671 /* parseExampleTests */,
 				80136187176F9EA900307671 /* Frameworks */,
 				80136186176F9EA900307671 /* Products */,
 			);
@@ -149,7 +133,16 @@
 		80136187176F9EA900307671 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				801361C3176F9EE100307671 /* Parse.framework */,
+				801361D9176FA53700307671 /* SystemConfiguration.framework */,
+				801361D7176FA52C00307671 /* StoreKit.framework */,
+				801361D5176FA52000307671 /* Security.framework */,
+				801361D3176FA51200307671 /* QuartzCore.framework */,
+				801361D1176FA4FD00307671 /* MobileCoreServices.framework */,
+				801361CF176FA4EF00307671 /* libz.1.1.3.dylib */,
+				80F6152F1772FDF8008CBDC0 /* Parse.framework */,
+				801361CD176FA4D900307671 /* CoreLocation.framework */,
+				801361CB176FA42D00307671 /* CFNetwork.framework */,
+				801361C9176FA41800307671 /* AudioToolbox.framework */,
 				80136188176F9EA900307671 /* UIKit.framework */,
 				8013618A176F9EA900307671 /* Foundation.framework */,
 				8013618C176F9EA900307671 /* CoreGraphics.framework */,
@@ -183,25 +176,6 @@
 				8013619A176F9EA900307671 /* Default.png */,
 				8013619C176F9EA900307671 /* Default@2x.png */,
 				8013619E176F9EA900307671 /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		801361B2176F9EAA00307671 /* parseExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				801361B8176F9EAA00307671 /* parseExampleTests.h */,
-				801361B9176F9EAA00307671 /* parseExampleTests.m */,
-				801361B3176F9EAA00307671 /* Supporting Files */,
-			);
-			path = parseExampleTests;
-			sourceTree = "<group>";
-		};
-		801361B3176F9EAA00307671 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				801361B4176F9EAA00307671 /* parseExampleTests-Info.plist */,
-				801361B5176F9EAA00307671 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -290,7 +264,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				801361B7176F9EAA00307671 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +301,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				801361BA176F9EAA00307671 /* parseExampleTests.m in Sources */,
 				801361C8176F9F7000307671 /* parseBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,14 +330,6 @@
 				801361A1176F9EA900307671 /* en */,
 			);
 			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		801361B5176F9EAA00307671 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				801361B6176F9EAA00307671 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -433,6 +397,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Quiz\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "parseExample/parseExample-Prefix.pch";
@@ -448,6 +413,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Quiz\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "parseExample/parseExample-Prefix.pch";
@@ -510,6 +476,7 @@
 				801361BF176F9EAA00307671 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		801361C0176F9EAA00307671 /* Build configuration list for PBXNativeTarget "parseExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +485,7 @@
 				801361C2176F9EAA00307671 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
