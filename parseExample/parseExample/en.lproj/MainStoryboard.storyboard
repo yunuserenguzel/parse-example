@@ -9,65 +9,42 @@
             <objects>
                 <viewController id="2" customClass="ParseViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3r-Zy-1ob">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="save">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButton:" destination="4" eventType="touchUpInside" id="vad-wg-kD1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Uu-Sp-VbV">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="delete">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteButton:" destination="4" eventType="touchUpInside" id="jA3-of-ssz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLX-dR-eoA">
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Yapılacak Listesi" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfG-yz-lgN">
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="2H0-Y4-KA6"/>
-                                    <constraint firstAttribute="width" constant="48" id="Hiv-gJ-2xh"/>
+                                    <constraint firstAttribute="height" constant="47" id="Ptb-c5-m4L"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="come">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="comeButton:" destination="4" eventType="touchUpInside" id="D6g-ps-OXg"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-3a-CZw">
+                                <fontDescription key="fontDescription" name="Marion-Regular" family="Marion" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="U5m-Rf-pjj">
+                                <items>
+                                    <barButtonItem title="çıkış" id="g4s-Hp-Ecx">
+                                        <connections>
+                                            <action selector="logOutButtonTapAction:" destination="2" id="7yu-Ap-Feg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0X2-69-NxL">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="ZwP-Y8-3cK"/>
+                                    <constraint firstAttribute="width" constant="207" id="8zF-tA-z95"/>
+                                    <constraint firstAttribute="height" constant="30" id="pLT-dK-CcY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sL0-up-Ah9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c73-pa-Z7V">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="73" id="EO8-56-o2G"/>
+                                    <constraint firstAttribute="width" constant="56" id="P3j-BB-lys"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="get">
+                                <state key="normal" title="Ekle">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -75,37 +52,71 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="getButton:" destination="4" eventType="touchUpInside" id="49A-Ea-Kz5"/>
+                                    <action selector="addTodo:" destination="2" eventType="touchUpInside" id="Tcb-y3-xOO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Parse Example" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfG-yz-lgN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNQ-CS-hwN">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="CT3-jZ-kza"/>
+                                    <constraint firstAttribute="height" constant="20" id="7s6-ic-ugs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Yenile">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="refleshButton:" destination="2" eventType="touchUpInside" id="YOL-IB-ARs"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxF-Ro-dWt">
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OAa-cJ-nZ2">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="2" id="e1W-an-bgX"/>
+                                            <outlet property="delegate" destination="2" id="Qcl-jj-jLm"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="OAa-cJ-nZ2" firstAttribute="bottom" secondItem="pxF-Ro-dWt" secondAttribute="bottom" type="default" id="2Kt-Xk-5iq"/>
+                                    <constraint firstItem="OAa-cJ-nZ2" firstAttribute="top" secondItem="pxF-Ro-dWt" secondAttribute="top" type="default" id="3dN-I1-Tx7"/>
+                                    <constraint firstItem="OAa-cJ-nZ2" firstAttribute="centerX" secondItem="pxF-Ro-dWt" secondAttribute="centerX" type="default" id="Ahd-m7-yhz"/>
+                                    <constraint firstItem="OAa-cJ-nZ2" firstAttribute="leading" secondItem="pxF-Ro-dWt" secondAttribute="leading" type="default" id="B71-aZ-qOI"/>
+                                    <constraint firstItem="OAa-cJ-nZ2" firstAttribute="trailing" secondItem="pxF-Ro-dWt" secondAttribute="trailing" type="default" id="RbJ-ek-2qC"/>
+                                    <constraint firstItem="OAa-cJ-nZ2" firstAttribute="centerY" secondItem="pxF-Ro-dWt" secondAttribute="centerY" type="default" id="gNc-c8-KYc"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5Uu-Sp-VbV" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4uj-CS-E7Y"/>
-                            <constraint firstItem="q3r-Zy-1ob" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4x5-TP-WnR"/>
-                            <constraint firstItem="5Uu-Sp-VbV" firstAttribute="top" secondItem="3" secondAttribute="top" constant="208" id="7ZS-PG-o8e"/>
-                            <constraint firstAttribute="trailing" secondItem="bcd-3a-CZw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9BT-SQ-ZjI"/>
-                            <constraint firstItem="RfG-yz-lgN" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="AG8-Ym-Ylp"/>
-                            <constraint firstItem="q3r-Zy-1ob" firstAttribute="top" secondItem="3" secondAttribute="top" constant="85" id="MMb-j9-GvA"/>
-                            <constraint firstAttribute="trailing" secondItem="tLX-dR-eoA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="PV0-pE-u7b"/>
-                            <constraint firstItem="sL0-up-Ah9" firstAttribute="top" secondItem="tLX-dR-eoA" secondAttribute="top" type="default" id="irF-7d-EoZ"/>
-                            <constraint firstItem="sL0-up-Ah9" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="kn0-BO-CoP"/>
-                            <constraint firstItem="sL0-up-Ah9" firstAttribute="top" secondItem="3" secondAttribute="top" constant="147" id="kyk-0t-96P"/>
-                            <constraint firstAttribute="trailing" secondItem="RfG-yz-lgN" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="m4r-co-Kxo"/>
-                            <constraint firstItem="RfG-yz-lgN" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="tl6-FD-8QL"/>
-                            <constraint firstItem="bcd-3a-CZw" firstAttribute="bottom" secondItem="q3r-Zy-1ob" secondAttribute="bottom" type="default" id="wqt-QN-rk3"/>
+                            <constraint firstItem="RfG-yz-lgN" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0b5-gE-yGW"/>
+                            <constraint firstItem="U5m-Rf-pjj" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="0vi-Vh-BKV"/>
+                            <constraint firstAttribute="trailing" secondItem="RfG-yz-lgN" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8lf-os-75H"/>
+                            <constraint firstItem="pxF-Ro-dWt" firstAttribute="top" secondItem="3" secondAttribute="top" constant="147" id="Dob-jp-Tb4"/>
+                            <constraint firstItem="0X2-69-NxL" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="FFM-kC-mM1"/>
+                            <constraint firstAttribute="trailing" secondItem="pxF-Ro-dWt" secondAttribute="trailing" constant="51" id="FHx-Xx-jRW"/>
+                            <constraint firstItem="PNQ-CS-hwN" firstAttribute="top" secondItem="c73-pa-Z7V" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="GYi-lK-U3a"/>
+                            <constraint firstItem="0X2-69-NxL" firstAttribute="top" secondItem="RfG-yz-lgN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Kpd-bS-uTO"/>
+                            <constraint firstItem="c73-pa-Z7V" firstAttribute="baseline" secondItem="0X2-69-NxL" secondAttribute="baseline" type="default" id="LqV-y2-VPO"/>
+                            <constraint firstAttribute="bottom" secondItem="pxF-Ro-dWt" secondAttribute="bottom" constant="66" id="ZJM-Dy-tVu"/>
+                            <constraint firstItem="U5m-Rf-pjj" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="cfm-Wr-Tno"/>
+                            <constraint firstItem="RfG-yz-lgN" firstAttribute="top" secondItem="3" secondAttribute="top" constant="15" id="ct2-Iw-4ep"/>
+                            <constraint firstItem="PNQ-CS-hwN" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="e7m-ta-ia8"/>
+                            <constraint firstItem="pxF-Ro-dWt" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="29" id="gdh-XD-jPb"/>
+                            <constraint firstItem="U5m-Rf-pjj" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="lZD-YZ-ibw"/>
+                            <constraint firstItem="PNQ-CS-hwN" firstAttribute="top" secondItem="0X2-69-NxL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ldm-bD-Hpl"/>
+                            <constraint firstItem="c73-pa-Z7V" firstAttribute="top" secondItem="RfG-yz-lgN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mjc-fY-WxL"/>
+                            <constraint firstAttribute="trailing" secondItem="c73-pa-Z7V" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="r3R-Pl-8Gk"/>
+                            <constraint firstItem="PNQ-CS-hwN" firstAttribute="trailing" secondItem="0X2-69-NxL" secondAttribute="trailing" type="default" id="t4v-Ji-zyn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="textField" destination="bcd-3a-CZw" id="TZv-9y-DVM"/>
+                        <outlet property="tableView" destination="OAa-cJ-nZ2" id="mGv-yX-sI5"/>
+                        <outlet property="textField" destination="0X2-69-NxL" id="8LS-bS-lh0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -119,10 +130,11 @@
         <class className="ParseViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ParseViewController.h"/>
             <relationships>
-                <relationship kind="action" name="comeButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="deleteButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="getButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="saveButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="addTodo:" candidateClass="UIButton"/>
+                <relationship kind="action" name="logOutButtonTapAction:"/>
+                <relationship kind="action" name="refleshButton:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logOutButtonTapAction" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -130,6 +142,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

@@ -15,8 +15,8 @@
     
     // Bu satırda parse config ayarları yapılır.
     
-    [Parse setApplicationId:@"e1hGzSkUNknVxVWdndWms8dMmT7wfeIFoAQShgp5"
-                  clientKey:@"p3IEEzO2uGrbTELYaet1MMeIdes3G85QSSQy9uOz"];
+    [Parse setApplicationId:@"InO4uMY1vGh9z5zNny10QvoJLr6hkKcKyOWzv1rh"
+                  clientKey:@"MyhVgzH7FW7BMHAqjNfZyAeRGCxceNcd0uyOXU3B"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     

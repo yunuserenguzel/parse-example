@@ -13,50 +13,254 @@
 @end
 
 @implementation ParseViewController
+
 @synthesize textField;
-@synthesize dataArray, dataForKey;
+@synthesize postArray;
+@synthesize tableView;
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Initialize table data
+  
+ 
+
+}
 
 
-- (parseBrain *)Brain{
+// Login işlemini gerçekleştiren metodlar...
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
-    if(!Brain){
-        Brain = [[parseBrain alloc] init];
+    if (![PFUser currentUser]) { // No user logged in
+        // Create the log in view controller
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Create the sign up view controller
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    }else{
+        [self getTodoDataWithName:[[PFUser currentUser] username]];
     }
-    return Brain;
+   
+}
+// Sent to the delegate to determine whether the log in request should be submitted to the server.
+- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+    // Check if both fields are completed
+    if (username && password && username.length != 0 && password.length != 0) {
+        
+        return YES; // Begin login process
+    }
+    
+    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
+                                message:@"Make sure you fill out all of the information!"
+                               delegate:nil
+                      cancelButtonTitle:@"ok"
+                      otherButtonTitles:nil] show];
+    return NO; // Interrupt login process
+}
+
+// Sent to the delegate when a PFUser is logged in.
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+// Sent to the delegate when the log in attempt fails.
+- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    NSLog(@"Failed to log in...");
+}
+
+// Sent to the delegate when the log in screen is dismissed.
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// Sent to the delegate to determine whether the sign up request should be submitted to the server.
+- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
+    BOOL informationComplete = YES;
+    
+    // loop through all of the submitted data
+    for (id key in info) {
+        NSString *field = [info objectForKey:key];
+        if (!field || field.length == 0) { // check completion
+            informationComplete = NO;
+            break;
+        }
+    }
+    
+    // Display an alert if a field wasn't completed
+    if (!informationComplete) {
+        [[[UIAlertView alloc] initWithTitle:@"Missing Information"
+                                    message:@"Make sure you fill out all of the information!"
+                                   delegate:nil
+                          cancelButtonTitle:@"ok"
+                          otherButtonTitles:nil] show];
+    }
+    
+    return informationComplete;
+}
+
+// Sent to the delegate when a PFUser is signed up.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    [self dismissModalViewControllerAnimated:YES]; // Dismiss the PFSignUpViewController
+}
+
+// Sent to the delegate when the sign up attempt fails.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
+    NSLog(@"Failed to sign up...");
+}
+
+// Sent to the delegate when the sign up screen is dismissed.
+- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
+    NSLog(@"User dismissed the signUpViewController");
+}
+// çıkış işlemi için aşagıdaki metod kullanılıyor.
+- (IBAction)logOutButtonTapAction:(id)sender {
+    [PFUser logOut];
+     postArray = nil;
+    [self.tableView reloadData];
+    [self viewDidAppear:YES];
+    
 }
 
 
--(IBAction)saveButton:(UIButton *)sender{
-    [self Brain];
+// uygulamaya giriş yaptıktan sonra gerekli olan metodlar aşagıda tanımlanmıştır.
+
+
+
+//todo eklemek için kullanılan metot.
+// text field a girilen todo yu parsa kaydetmek için kullanılır.
+-(IBAction)addTodo:(UIButton *)sender{
+
     
-    // clouda yüklencek veri seti oluşturulur.
-    dataArray = [NSArray arrayWithObjects: @"13", @"deneme", @"YES", nil];
-    // veri seti ile uyumlu alan isimleri oluşturulur.
-    dataForKey = [NSArray arrayWithObjects: @"score", @"playerName", @"cheatMode", nil];
+    NSString *content = [textField text];
+    [textField setText:@""];
+    [self.textField endEditing:YES];
+    NSString *name = [[PFUser currentUser] username];
+          
     
-    [Brain saveData:dataArray whichFieldName:dataForKey];
+    PFObject *todo = [PFObject objectWithClassName:@"Todo"];
+    
+    [todo setObject:content forKey:@"content"];
+    [todo setObject:name forKey:@"userName"];
+    
+    //saveInBackground komutu anında apiye yüklem yapılabilinir.
+    //saveEventually komutu offline kayıt alır.
+    
+    [todo saveInBackground];
+ 
+    [self getTodoDataWithName:[[PFUser currentUser] username] ];
+
+}
+- (IBAction)refleshButton:(UIButton *)sender{
+    
+   
+    //Create query for all Post object by the current user
+    PFQuery *postQuery = [PFQuery queryWithClassName:@"Todo"];
+    [postQuery whereKey:@"userName" equalTo:[[PFUser currentUser] username]];
+    
+    // Run the query
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            //Save results and update the table
+            postArray = objects;
+            [self.tableView  reloadData];
+        }
+    }];
+    
+
+}
+
+
+- (void)getTodoDataWithName:(NSString *)name{
+   
+    // Then, elsewhere in your code...
+    PFQuery *query = [PFQuery queryWithClassName:@"Todo"];
+    [query whereKey:@"userName" equalTo:name];
+    [query findObjectsInBackgroundWithTarget:self
+                                    selector:@selector(findCallback:error:)];
+    
+    
+}
+- (void)findCallback:(NSArray *)results error:(NSError *)error {
+    
+    if (!error) {
+        // Do somethin0 g with the found objects
+        postArray = results;
+        [self.tableView  reloadData];
+    }else {
+        // Log details of the failure
+        NSLog(@"Error: %@ %@", error, [error userInfo]);
+    }
+    
     
     
 }
 
-- (IBAction)getButton:(UIButton *)sender{
-    [self Brain];
-    [Brain getParseData];
-    
+
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return postArray.count;
 }
 
-- (IBAction)deleteButton:(UIButton *)sender{
-    [self Brain];
-    [Brain deleteParseData];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell with the textContent of the Post as the cell's text label
+    PFObject *post = [postArray objectAtIndex:indexPath.row];
+    [cell.textLabel setText:[post objectForKey:@"content"]];
+    [cell.detailTextLabel setText:post.objectId];
+ 
+    
+    return cell;
 }
-- (void)comeButton:(UIButton *)sender{
-    [self Brain];
-    
-    [Brain getParseDataWithName:textField.text];
-    
-    
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
 }
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+ forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSLog(@"%@", [tableView cellForRowAtIndexPath:indexPath] );
+            
+    }
+}
+
+
+
+
+
+
+
 
 
 @end

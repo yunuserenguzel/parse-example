@@ -21,8 +21,6 @@
 		801361AD176F9EAA00307671 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361AC176F9EAA00307671 /* SenTestingKit.framework */; };
 		801361AE176F9EAA00307671 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80136188176F9EA900307671 /* UIKit.framework */; };
 		801361AF176F9EAA00307671 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8013618A176F9EA900307671 /* Foundation.framework */; };
-		801361C7176F9F7000307671 /* parseBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 801361C6176F9F7000307671 /* parseBrain.m */; };
-		801361C8176F9F7000307671 /* parseBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 801361C6176F9F7000307671 /* parseBrain.m */; };
 		801361CA176FA41800307671 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361C9176FA41800307671 /* AudioToolbox.framework */; };
 		801361CC176FA42D00307671 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361CB176FA42D00307671 /* CFNetwork.framework */; };
 		801361CE176FA4D900307671 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361CD176FA4D900307671 /* CoreLocation.framework */; };
@@ -64,8 +62,6 @@
 		801361A4176F9EA900307671 /* ParseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseViewController.m; sourceTree = "<group>"; };
 		801361AB176F9EAA00307671 /* parseExampleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = parseExampleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		801361AC176F9EAA00307671 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		801361C5176F9F7000307671 /* parseBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parseBrain.h; sourceTree = "<group>"; };
-		801361C6176F9F7000307671 /* parseBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parseBrain.m; sourceTree = "<group>"; };
 		801361C9176FA41800307671 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		801361CB176FA42D00307671 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		801361CD176FA4D900307671 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -156,8 +152,6 @@
 			children = (
 				80136197176F9EA900307671 /* ParseAppDelegate.h */,
 				80136198176F9EA900307671 /* ParseAppDelegate.m */,
-				801361C5176F9F7000307671 /* parseBrain.h */,
-				801361C6176F9F7000307671 /* parseBrain.m */,
 				801361A0176F9EA900307671 /* MainStoryboard.storyboard */,
 				801361A3176F9EA900307671 /* ParseViewController.h */,
 				801361A4176F9EA900307671 /* ParseViewController.m */,
@@ -293,7 +287,6 @@
 				80136195176F9EA900307671 /* main.m in Sources */,
 				80136199176F9EA900307671 /* ParseAppDelegate.m in Sources */,
 				801361A5176F9EA900307671 /* ParseViewController.m in Sources */,
-				801361C7176F9F7000307671 /* parseBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				801361C8176F9F7000307671 /* parseBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

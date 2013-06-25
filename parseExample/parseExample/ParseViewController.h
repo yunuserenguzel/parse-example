@@ -7,21 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "parseBrain.h"
+#import "Parse/Parse.h"
 
 @interface ParseViewController : UIViewController
+                                <UITableViewDelegate, UITableViewDataSource,
+                                PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+                                           
 
 {
-    parseBrain * Brain;
+
     IBOutlet UITextField * textField;
 }
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *postArray;
+@property (weak, nonatomic) IBOutlet UIButton *logOutButtonTapAction;
 @property IBOutlet UITextField * textField;
-@property NSArray *dataArray;
-@property NSArray *dataForKey;
-- (parseBrain *)Brain;
-- (IBAction)saveButton:(UIButton *)sender;
-- (IBAction)getButton:(UIButton *)sender;
-- (IBAction)deleteButton:(UIButton *)sender;
-- (IBAction)comeButton:(UIButton *)sender;
+
+
+
+
+//- (void)getTodoDataWithName:(NSString *)name;
+- (IBAction)addTodo:(UIButton *)sender;
+- (IBAction)refleshButton:(UIButton *)sender;
+
 
 @end
