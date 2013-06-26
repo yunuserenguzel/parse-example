@@ -20,8 +20,6 @@
 @property IBOutlet UITextField * textField;
 
 
-
-
 - (IBAction)addTodo:(UIButton *)sender;
 
 

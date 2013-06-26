@@ -163,6 +163,7 @@
     
         [todo setObject:content forKey:@"content"];
         [todo setObject:name forKey:@"userName"];
+        [todo setObject:[NSNumber numberWithBool:YES] forKey:@"state"];
     
         //saveInBackground komutu anında apiye yüklem yapılabilinir.
         //saveEventually komutu offline kayıt alır.
@@ -223,7 +224,7 @@
 - (void)getCallback:(PFObject *)deleteTodo error:(NSError *)error {
     if (!error) {
         [deleteTodo deleteInBackground];
-         [self getTodoDataWithName:[[PFUser currentUser] username]];
+        [self getTodoDataWithName:[[PFUser currentUser] username]];
     } else {
         // Log details of our failure
         NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -254,18 +255,52 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        
     }
     
     // Configure the cell with the textContent of the Post as the cell's text label
-    PFObject *post = [postArray objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[post objectForKey:@"content"]];
-    dateString = [formatter stringFromDate:[post createdAt]];
+    PFObject *todo = [postArray objectAtIndex:indexPath.row];
+    [cell.textLabel setText:[todo objectForKey:@"content"]];
+    dateString = [formatter stringFromDate:[todo createdAt]];
 
     [cell.detailTextLabel setText: dateString];
- 
     
+    NSString *state = [todo objectForKey:@"state"];
+    
+    if( [state intValue]){
+        cell.imageView.image = [UIImage imageNamed:@"done.png"];
+    }else{
+        cell.imageView.image = [UIImage imageNamed:@"wait.png"];
+    }
+    
+
+ 
     return cell;
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    PFObject *stateUpdate = [postArray objectAtIndex:indexPath.row];
+    NSString *state = [stateUpdate objectForKey:@"state"];
+    
+    if ( [state intValue] ){
+        [stateUpdate setObject:[NSNumber numberWithBool:NO] forKey:@"state"];
+    }else{
+        [stateUpdate setObject:[NSNumber numberWithBool:YES] forKey:@"state"];
+    }
+    
+  
+    
+    [stateUpdate saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self getTodoDataWithName:[[PFUser currentUser] username]];
+        } 
+    }];
+    
+}
+
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -277,8 +312,7 @@
     return UITableViewCellEditingStyleDelete;
 }
 
-- (void)tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
  forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
