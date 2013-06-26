@@ -49,7 +49,8 @@
         MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];
         logInViewController.delegate = self;
         logInViewController.facebookPermissions = @[@"friends_about_me"];
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
+        // login ekranındaki butonların ve text alanlarının ayarlandığı yer.
+        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
         
         // Customize the Sign Up View Controller
         MySignUpViewController *signUpViewController = [[MySignUpViewController alloc] init];
@@ -74,7 +75,7 @@
         return YES;
     }
     
-    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Hata !!!", nil) message:NSLocalizedString(@"Gerekli bilgileri girdiğinize emin olun.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
     return NO;
 }
 
@@ -85,7 +86,7 @@
 
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in...");
+    NSLog(@"Giriş hatası");
 }
 
 // Sent to the delegate when the log in screen is dismissed.
@@ -108,7 +109,7 @@
     }
     
     if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Hata Bilgisi", nil) message:NSLocalizedString(@"Gerekli bilgileri girdiğinize emin olun!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
     }
     
     return informationComplete;
@@ -121,12 +122,12 @@
 
 // Sent to the delegate when the sign up attempt fails.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
-    NSLog(@"Failed to sign up...");
+    NSLog(@"Kullanıcı kaydı alınamadı.");
 }
 
 // Sent to the delegate when the sign up screen is dismissed.
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-    NSLog(@"User dismissed the signUpViewController");
+    NSLog(@"Kullanıcı kayıt çıkışı!!");
 }
 
 
