@@ -13,23 +13,16 @@
                                 <UITableViewDelegate, UITableViewDataSource,
                                 PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
                                            
-
-{
-
-    IBOutlet UITextField * textField;
-}
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *postArray;
 @property (weak, nonatomic) IBOutlet UIButton *logOutButtonTapAction;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *refleshButton;
 @property IBOutlet UITextField * textField;
 
 
 
 
-//- (void)getTodoDataWithName:(NSString *)name;
 - (IBAction)addTodo:(UIButton *)sender;
-- (IBAction)refleshButton:(UIButton *)sender;
 
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "ParseViewController.h"
+#import "MyLogInViewController.h"
+#import "MySignUpViewController.h"
 
 @interface ParseViewController ()
 
@@ -14,10 +16,10 @@
 
 @implementation ParseViewController
 
-@synthesize textField;
+
 @synthesize postArray;
 @synthesize tableView;
-
+@synthesize textField;
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -27,46 +29,53 @@
 
 }
 
+#pragma mark - UIViewController
 
-// Login işlemini gerçekleştiren metodlar...
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([PFUser currentUser]) {
+        NSLog(@"giriş başarılı");
+    } else {
+        NSLog(@"giremedi");
+    }
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (![PFUser currentUser]) { // No user logged in
-        // Create the log in view controller
-        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
-        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+    // Check if user is logged in
+    if (![PFUser currentUser]) {
+        // Customize the Log In View Controller
+        MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];
+        logInViewController.delegate = self;
+        logInViewController.facebookPermissions = @[@"friends_about_me"];
+        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
         
-        // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        // Customize the Sign Up View Controller
+        MySignUpViewController *signUpViewController = [[MySignUpViewController alloc] init];
+        signUpViewController.delegate = self;
+        signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
+        logInViewController.signUpController = signUpViewController;
         
-        // Assign our sign up controller to be displayed from the login controller
-        [logInViewController setSignUpController:signUpViewController];
-        
-        // Present the log in view controller
+        // Present Log In View Controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
-    }else{
-        [self getTodoDataWithName:[[PFUser currentUser] username]];
+    }else {
+        [self getTodoDataWithName:[[PFUser currentUser] username] ];
+    
     }
-   
 }
+
+
+#pragma mark - PFLogInViewControllerDelegate
+
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
-    // Check if both fields are completed
-    if (username && password && username.length != 0 && password.length != 0) {
-        //[self getTodoDataWithName:[[PFUser currentUser] username] ];
-        return YES; // Begin login process
+    if (username && password && username.length && password.length) {
+        return YES;
     }
     
-    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                message:@"Make sure you fill out all of the information!"
-                               delegate:nil
-                      cancelButtonTitle:@"ok"
-                      otherButtonTitles:nil] show];
-    return NO; // Interrupt login process
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+    return NO;
 }
 
 // Sent to the delegate when a PFUser is logged in.
@@ -84,26 +93,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+#pragma mark - PFSignUpViewControllerDelegate
+
 // Sent to the delegate to determine whether the sign up request should be submitted to the server.
 - (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
     BOOL informationComplete = YES;
-    
-    // loop through all of the submitted data
     for (id key in info) {
         NSString *field = [info objectForKey:key];
-        if (!field || field.length == 0) { // check completion
+        if (!field || field.length == 0) {
             informationComplete = NO;
             break;
         }
     }
     
-    // Display an alert if a field wasn't completed
     if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                    message:@"Make sure you fill out all of the information!"
-                                   delegate:nil
-                          cancelButtonTitle:@"ok"
-                          otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
     }
     
     return informationComplete;
@@ -111,7 +116,7 @@
 
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-    [self dismissModalViewControllerAnimated:YES]; // Dismiss the PFSignUpViewController
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 // Sent to the delegate when the sign up attempt fails.
@@ -123,6 +128,9 @@
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
     NSLog(@"User dismissed the signUpViewController");
 }
+
+
+
 // çıkış işlemi için aşagıdaki metod kullanılıyor.
 - (IBAction)logOutButtonTapAction:(id)sender {
     [PFUser logOut];
@@ -143,25 +151,28 @@
 
     
     NSString *content = [textField text];
-    [textField setText:@""];
-    [self.textField endEditing:YES];
-    NSString *name = [[PFUser currentUser] username];
+    
+    if ( content.length != 0 ){
+        [textField setText:@""];
+        [self.textField endEditing:YES];
+        NSString *name = [[PFUser currentUser] username];
           
     
-    PFObject *todo = [PFObject objectWithClassName:@"Todo"];
+        PFObject *todo = [PFObject objectWithClassName:@"Todo"];
     
-    [todo setObject:content forKey:@"content"];
-    [todo setObject:name forKey:@"userName"];
+        [todo setObject:content forKey:@"content"];
+        [todo setObject:name forKey:@"userName"];
     
-    //saveInBackground komutu anında apiye yüklem yapılabilinir.
-    //saveEventually komutu offline kayıt alır.
+        //saveInBackground komutu anında apiye yüklem yapılabilinir.
+        //saveEventually komutu offline kayıt alır.
     
-    [todo saveInBackground];
- 
+        [todo saveInBackground];
+    }
+    
     [self getTodoDataWithName:[[PFUser currentUser] username] ];
 
 }
-- (IBAction)refleshButton:(UIButton *)sender{
+- (IBAction)refleshButton:(id)sender{
     
    
     //Create query for all Post object by the current user

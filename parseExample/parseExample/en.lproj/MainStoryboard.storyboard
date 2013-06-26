@@ -22,19 +22,10 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="U5m-Rf-pjj">
-                                <items>
-                                    <barButtonItem title="çıkış" id="g4s-Hp-Ecx">
-                                        <connections>
-                                            <action selector="logOutButtonTapAction:" destination="2" id="7yu-Ap-Feg"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0X2-69-NxL">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="207" id="8zF-tA-z95"/>
-                                    <constraint firstAttribute="height" constant="30" id="pLT-dK-CcY"/>
+                                    <constraint firstAttribute="height" constant="30" id="JVb-b2-UH5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -55,56 +46,61 @@
                                     <action selector="addTodo:" destination="2" eventType="touchUpInside" id="Tcb-y3-xOO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNQ-CS-hwN">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="7s6-ic-ugs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Yenile">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="refleshButton:" destination="2" eventType="touchUpInside" id="YOL-IB-ARs"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OAa-cJ-nZ2">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="242" id="XAX-wt-MX7"/>
-                                    <constraint firstAttribute="height" constant="236" id="r5O-9d-xha"/>
+                                    <constraint firstAttribute="height" constant="293" id="dVW-dc-in6"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="2" id="e1W-an-bgX"/>
                                     <outlet property="delegate" destination="2" id="Qcl-jj-jLm"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="nMw-2b-ClO">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Vzg-Rx-k5S"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="refresh" id="b2V-dl-2VX">
+                                        <connections>
+                                            <action selector="refleshButton:" destination="2" id="wzb-db-EHM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="jEj-9V-VqW">
+                                <items>
+                                    <barButtonItem title="Çıkış" id="zKG-0X-4aY">
+                                        <connections>
+                                            <action selector="logOutButtonTapAction:" destination="2" id="02Z-tB-iBO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RfG-yz-lgN" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0b5-gE-yGW"/>
-                            <constraint firstItem="U5m-Rf-pjj" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="0vi-Vh-BKV"/>
-                            <constraint firstItem="OAa-cJ-nZ2" firstAttribute="centerX" secondItem="U5m-Rf-pjj" secondAttribute="centerX" type="default" id="64O-hK-SZ4"/>
                             <constraint firstAttribute="trailing" secondItem="RfG-yz-lgN" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8lf-os-75H"/>
-                            <constraint firstItem="OAa-cJ-nZ2" firstAttribute="top" secondItem="3" secondAttribute="top" constant="159" id="Dad-bA-DSx"/>
+                            <constraint firstItem="jEj-9V-VqW" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="90z-Hd-MQ9"/>
+                            <constraint firstItem="0X2-69-NxL" firstAttribute="top" secondItem="RfG-yz-lgN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Alm-Ip-L1X"/>
+                            <constraint firstItem="c73-pa-Z7V" firstAttribute="top" secondItem="RfG-yz-lgN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="CBr-RR-Q2n"/>
+                            <constraint firstItem="nMw-2b-ClO" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="DxR-MR-B6h"/>
+                            <constraint firstItem="RfG-yz-lgN" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="F9B-DO-5mT"/>
                             <constraint firstItem="0X2-69-NxL" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="FFM-kC-mM1"/>
-                            <constraint firstItem="0X2-69-NxL" firstAttribute="top" secondItem="RfG-yz-lgN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Kpd-bS-uTO"/>
                             <constraint firstItem="c73-pa-Z7V" firstAttribute="baseline" secondItem="0X2-69-NxL" secondAttribute="baseline" type="default" id="LqV-y2-VPO"/>
-                            <constraint firstItem="U5m-Rf-pjj" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="cfm-Wr-Tno"/>
-                            <constraint firstItem="OAa-cJ-nZ2" firstAttribute="centerX" secondItem="RfG-yz-lgN" secondAttribute="centerX" type="default" id="cmd-27-HAC"/>
-                            <constraint firstItem="RfG-yz-lgN" firstAttribute="top" secondItem="3" secondAttribute="top" constant="15" id="ct2-Iw-4ep"/>
-                            <constraint firstItem="PNQ-CS-hwN" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="e7m-ta-ia8"/>
-                            <constraint firstItem="0X2-69-NxL" firstAttribute="bottom" secondItem="c73-pa-Z7V" secondAttribute="bottom" type="default" id="gox-x0-kDY"/>
-                            <constraint firstItem="PNQ-CS-hwN" firstAttribute="top" secondItem="0X2-69-NxL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ldm-bD-Hpl"/>
-                            <constraint firstItem="c73-pa-Z7V" firstAttribute="top" secondItem="RfG-yz-lgN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mjc-fY-WxL"/>
+                            <constraint firstItem="OAa-cJ-nZ2" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NLL-ED-h2Z"/>
+                            <constraint firstItem="OAa-cJ-nZ2" firstAttribute="top" secondItem="3" secondAttribute="top" constant="112" id="XNY-Zb-wK9"/>
+                            <constraint firstItem="nMw-2b-ClO" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="fO7-bT-egL"/>
+                            <constraint firstItem="jEj-9V-VqW" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="lI5-eW-seq"/>
+                            <constraint firstAttribute="trailing" secondItem="OAa-cJ-nZ2" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="q4r-2B-EdH"/>
+                            <constraint firstItem="c73-pa-Z7V" firstAttribute="bottom" secondItem="0X2-69-NxL" secondAttribute="bottom" type="default" id="qKj-aj-jSV"/>
                             <constraint firstAttribute="trailing" secondItem="c73-pa-Z7V" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="r3R-Pl-8Gk"/>
-                            <constraint firstItem="PNQ-CS-hwN" firstAttribute="trailing" secondItem="0X2-69-NxL" secondAttribute="trailing" type="default" id="t4v-Ji-zyn"/>
+                            <constraint firstItem="nMw-2b-ClO" firstAttribute="leading" secondItem="jEj-9V-VqW" secondAttribute="trailing" type="default" id="yvx-Vt-6Ol"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="refleshButton" destination="b2V-dl-2VX" id="F8i-W8-KDp"/>
                         <outlet property="tableView" destination="OAa-cJ-nZ2" id="mGv-yX-sI5"/>
                         <outlet property="textField" destination="0X2-69-NxL" id="8LS-bS-lh0"/>
                     </connections>
@@ -122,8 +118,9 @@
             <relationships>
                 <relationship kind="action" name="addTodo:" candidateClass="UIButton"/>
                 <relationship kind="action" name="logOutButtonTapAction:"/>
-                <relationship kind="action" name="refleshButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="refleshButton:"/>
                 <relationship kind="outlet" name="logOutButtonTapAction" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="refleshButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
             </relationships>
