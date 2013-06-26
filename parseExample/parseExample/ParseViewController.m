@@ -22,8 +22,8 @@
 {
     [super viewDidLoad];
     // Initialize table data
+    [self.tableView  reloadData];
   
- 
 
 }
 
@@ -57,7 +57,7 @@
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
     // Check if both fields are completed
     if (username && password && username.length != 0 && password.length != 0) {
-        
+        //[self getTodoDataWithName:[[PFUser currentUser] username] ];
         return YES; // Begin login process
     }
     
@@ -167,7 +167,7 @@
     //Create query for all Post object by the current user
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Todo"];
     [postQuery whereKey:@"userName" equalTo:[[PFUser currentUser] username]];
-    
+    [postQuery orderByDescending:@"createdAt"];
     // Run the query
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -177,6 +177,7 @@
         }
     }];
     
+  
 
 }
 
@@ -186,6 +187,8 @@
     // Then, elsewhere in your code...
     PFQuery *query = [PFQuery queryWithClassName:@"Todo"];
     [query whereKey:@"userName" equalTo:name];
+    
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithTarget:self
                                     selector:@selector(findCallback:error:)];
     
@@ -205,6 +208,15 @@
     
     
 }
+- (void)getCallback:(PFObject *)deleteTodo error:(NSError *)error {
+    if (!error) {
+        [deleteTodo deleteInBackground];
+         [self getTodoDataWithName:[[PFUser currentUser] username]];
+    } else {
+        // Log details of our failure
+        NSLog(@"Error: %@ %@", error, [error userInfo]);
+    }
+}
 
 
 
@@ -218,6 +230,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *dateString;
+    NSDateFormatter *formatter;
+    
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    
+        
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -228,7 +247,9 @@
     // Configure the cell with the textContent of the Post as the cell's text label
     PFObject *post = [postArray objectAtIndex:indexPath.row];
     [cell.textLabel setText:[post objectForKey:@"content"]];
-    [cell.detailTextLabel setText:post.objectId];
+    dateString = [formatter stringFromDate:[post createdAt]];
+
+    [cell.detailTextLabel setText: dateString];
  
     
     return cell;
@@ -250,8 +271,14 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        NSLog(@"%@", [tableView cellForRowAtIndexPath:indexPath] );
-            
+        NSString *deleteId = [[postArray objectAtIndex:indexPath.row] objectId];
+        
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Todo"];
+        [query getObjectInBackgroundWithId:deleteId
+                                    target:self
+                                  selector:@selector(getCallback:error:)];
+
     }
 }
 
