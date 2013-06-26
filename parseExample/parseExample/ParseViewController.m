@@ -196,7 +196,7 @@
 
 
 - (void)getTodoDataWithName:(NSString *)name{
-   
+
     // Then, elsewhere in your code...
     PFQuery *query = [PFQuery queryWithClassName:@"Todo"];
     [query whereKey:@"userName" equalTo:name];
@@ -241,7 +241,7 @@
     return postArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tw cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *dateString;
     NSDateFormatter *formatter;
@@ -252,7 +252,7 @@
         
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tw dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         

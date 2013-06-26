@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00F67BD8177B28C5004D21E0 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F67BD6177B28C5004D21E0 /* done.png */; };
+		00F67BD9177B28C5004D21E0 /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F67BD7177B28C5004D21E0 /* wait.png */; };
 		80136189176F9EA900307671 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80136188176F9EA900307671 /* UIKit.framework */; };
 		8013618B176F9EA900307671 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8013618A176F9EA900307671 /* Foundation.framework */; };
 		8013618D176F9EA900307671 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8013618C176F9EA900307671 /* CoreGraphics.framework */; };
@@ -63,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00F67BD6177B28C5004D21E0 /* done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = done.png; sourceTree = "<group>"; };
+		00F67BD7177B28C5004D21E0 /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
 		80136185176F9EA900307671 /* parseExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = parseExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80136188176F9EA900307671 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8013618A176F9EA900307671 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -222,6 +226,8 @@
 		80D36CC5177AEA5C004ABCC1 /* Assert */ = {
 			isa = PBXGroup;
 			children = (
+				00F67BD6177B28C5004D21E0 /* done.png */,
+				00F67BD7177B28C5004D21E0 /* wait.png */,
 				80D36CC6177AEA74004ABCC1 /* Icon.png */,
 				80D36CC7177AEA74004ABCC1 /* Icon@2x.png */,
 				80D36CC8177AEA74004ABCC1 /* Default.png */,
@@ -337,6 +343,8 @@
 				80D36CE5177AEA74004ABCC1 /* SignUpFieldBG.png in Resources */,
 				80D36CE6177AEA74004ABCC1 /* Twitter.png in Resources */,
 				80D36CE7177AEA74004ABCC1 /* TwitterDown.png in Resources */,
+				00F67BD8177B28C5004D21E0 /* done.png in Resources */,
+				00F67BD9177B28C5004D21E0 /* wait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
