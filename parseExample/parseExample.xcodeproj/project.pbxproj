@@ -32,6 +32,12 @@
 		801361D6176FA52000307671 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361D5176FA52000307671 /* Security.framework */; };
 		801361D8176FA52C00307671 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361D7176FA52C00307671 /* StoreKit.framework */; };
 		801361DA176FA53700307671 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801361D9176FA53700307671 /* SystemConfiguration.framework */; };
+		807E6E391781739C00ACE489 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807E6E371781739C00ACE489 /* FacebookSDK.framework */; };
+		807E6E3A1781739C00ACE489 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 807E6E381781739C00ACE489 /* FacebookSDKResources.bundle */; };
+		807E6E3C1781766800ACE489 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807E6E3B1781766800ACE489 /* Accounts.framework */; };
+		807E6E3E1781768000ACE489 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807E6E3D1781768000ACE489 /* AdSupport.framework */; };
+		807E6E40178176C600ACE489 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807E6E3F178176C600ACE489 /* Social.framework */; };
+		807E6E421781771000ACE489 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 807E6E411781771000ACE489 /* libsqlite3.dylib */; };
 		80D36CC3177AE97C004ABCC1 /* MyLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D36CC0177AE97C004ABCC1 /* MyLogInViewController.m */; };
 		80D36CC4177AE97C004ABCC1 /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D36CC2177AE97C004ABCC1 /* MySignUpViewController.m */; };
 		80D36CD7177AEA74004ABCC1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 80D36CC6177AEA74004ABCC1 /* Icon.png */; };
@@ -94,6 +100,12 @@
 		801361D5176FA52000307671 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		801361D7176FA52C00307671 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		801361D9176FA53700307671 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		807E6E371781739C00ACE489 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		807E6E381781739C00ACE489 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		807E6E3B1781766800ACE489 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		807E6E3D1781768000ACE489 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		807E6E3F178176C600ACE489 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		807E6E411781771000ACE489 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		80D36CBF177AE97C004ABCC1 /* MyLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLogInViewController.h; sourceTree = "<group>"; };
 		80D36CC0177AE97C004ABCC1 /* MyLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLogInViewController.m; sourceTree = "<group>"; };
 		80D36CC1177AE97C004ABCC1 /* MySignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySignUpViewController.h; sourceTree = "<group>"; };
@@ -123,12 +135,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				807E6E421781771000ACE489 /* libsqlite3.dylib in Frameworks */,
+				807E6E40178176C600ACE489 /* Social.framework in Frameworks */,
+				801361D2176FA4FD00307671 /* MobileCoreServices.framework in Frameworks */,
+				807E6E3E1781768000ACE489 /* AdSupport.framework in Frameworks */,
+				807E6E3C1781766800ACE489 /* Accounts.framework in Frameworks */,
 				801361DA176FA53700307671 /* SystemConfiguration.framework in Frameworks */,
 				801361D8176FA52C00307671 /* StoreKit.framework in Frameworks */,
-				801361D6176FA52000307671 /* Security.framework in Frameworks */,
 				801361D4176FA51200307671 /* QuartzCore.framework in Frameworks */,
-				801361D2176FA4FD00307671 /* MobileCoreServices.framework in Frameworks */,
 				801361D0176FA4EF00307671 /* libz.1.1.3.dylib in Frameworks */,
+				801361D6176FA52000307671 /* Security.framework in Frameworks */,
 				801361CE176FA4D900307671 /* CoreLocation.framework in Frameworks */,
 				8013618D176F9EA900307671 /* CoreGraphics.framework in Frameworks */,
 				801361CC176FA42D00307671 /* CFNetwork.framework in Frameworks */,
@@ -136,6 +152,7 @@
 				80136189176F9EA900307671 /* UIKit.framework in Frameworks */,
 				8013618B176F9EA900307671 /* Foundation.framework in Frameworks */,
 				80F615301772FDF8008CBDC0 /* Parse.framework in Frameworks */,
+				807E6E391781739C00ACE489 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,9 +191,15 @@
 		80136187176F9EA900307671 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				807E6E411781771000ACE489 /* libsqlite3.dylib */,
+				807E6E3F178176C600ACE489 /* Social.framework */,
+				807E6E3D1781768000ACE489 /* AdSupport.framework */,
+				807E6E3B1781766800ACE489 /* Accounts.framework */,
+				807E6E371781739C00ACE489 /* FacebookSDK.framework */,
+				807E6E381781739C00ACE489 /* FacebookSDKResources.bundle */,
+				801361D5176FA52000307671 /* Security.framework */,
 				801361D9176FA53700307671 /* SystemConfiguration.framework */,
 				801361D7176FA52C00307671 /* StoreKit.framework */,
-				801361D5176FA52000307671 /* Security.framework */,
 				801361D3176FA51200307671 /* QuartzCore.framework */,
 				801361D1176FA4FD00307671 /* MobileCoreServices.framework */,
 				801361CF176FA4EF00307671 /* libz.1.1.3.dylib */,
@@ -215,9 +238,9 @@
 				80136190176F9EA900307671 /* parseExample-Info.plist */,
 				80136191176F9EA900307671 /* InfoPlist.strings */,
 				80136194176F9EA900307671 /* main.m */,
+				8013619C176F9EA900307671 /* Default@2x.png */,
 				80136196176F9EA900307671 /* parseExample-Prefix.pch */,
 				8013619A176F9EA900307671 /* Default.png */,
-				8013619C176F9EA900307671 /* Default@2x.png */,
 				8013619E176F9EA900307671 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
@@ -345,6 +368,7 @@
 				80D36CE7177AEA74004ABCC1 /* TwitterDown.png in Resources */,
 				00F67BD8177B28C5004D21E0 /* done.png in Resources */,
 				00F67BD9177B28C5004D21E0 /* wait.png in Resources */,
+				807E6E3A1781739C00ACE489 /* FacebookSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

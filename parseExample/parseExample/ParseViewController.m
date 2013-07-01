@@ -10,6 +10,7 @@
 #import "MyLogInViewController.h"
 #import "MySignUpViewController.h"
 
+
 @interface ParseViewController ()
 
 @end
@@ -20,14 +21,21 @@
 @synthesize postArray;
 @synthesize tableView;
 @synthesize textField;
+
+
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     // Initialize table data
     [self.tableView  reloadData];
-  
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        NSLog(@"facebook girdi");
+    }
+
 
 }
+
 
 #pragma mark - UIViewController
 
@@ -40,6 +48,37 @@
     }
 }
 
+/* Login to facebook method */
+- (IBAction)loginButtonTouchHandler:(id)sender  {
+    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    
+    // Login PFUser using facebook
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        [_activityIndicator stopAnimating]; // Hide loading indicator
+        
+        if (!user) {
+            if (!error) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:@"Uh oh. The user cancelled the Facebook login." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+            } else {
+                NSLog(@"Uh oh. An error occurred: %@", error);
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+            }
+        } else if (user.isNew) {
+            NSLog(@"User with facebook signed up and logged in!");
+            
+        } else {
+            NSLog(@"User with facebook logged in!");
+            
+        }
+    }];
+    
+    [_activityIndicator startAnimating]; // Show loading indicator until login is finished
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -50,7 +89,7 @@
         logInViewController.delegate = self;
         logInViewController.facebookPermissions = @[@"friends_about_me"];
         // login ekranındaki butonların ve text alanlarının ayarlandığı yer.
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
+        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsSignUpButton | PFLogInFieldsFacebook | PFLogInFieldsTwitter;
         
         // Customize the Sign Up View Controller
         MySignUpViewController *signUpViewController = [[MySignUpViewController alloc] init];
@@ -61,6 +100,7 @@
         // Present Log In View Controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
     }else {
+        
         [self getTodoDataWithName:[[PFUser currentUser] username] ];
     
     }
@@ -163,7 +203,7 @@
     
         [todo setObject:content forKey:@"content"];
         [todo setObject:name forKey:@"userName"];
-        [todo setObject:[NSNumber numberWithBool:YES] forKey:@"state"];
+        [todo setObject:[NSNumber numberWithBool:NO] forKey:@"state"];
     
         //saveInBackground komutu anında apiye yüklem yapılabilinir.
         //saveEventually komutu offline kayıt alır.
@@ -196,8 +236,8 @@
 
 
 - (void)getTodoDataWithName:(NSString *)name{
+    
 
-    // Then, elsewhere in your code...
     PFQuery *query = [PFQuery queryWithClassName:@"Todo"];
     [query whereKey:@"userName" equalTo:name];
     

@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
 
+
+
 @interface ParseViewController : UIViewController
                                 <UITableViewDelegate, UITableViewDataSource,
                                 PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+
                                            
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *postArray;
@@ -21,6 +27,8 @@
 
 
 - (IBAction)addTodo:(UIButton *)sender;
+- (IBAction)loginButtonTouchHandler:(id)sender;
+
 
 
 @end
