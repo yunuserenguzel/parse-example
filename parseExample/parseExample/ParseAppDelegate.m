@@ -21,6 +21,7 @@
     [Parse setApplicationId:@"InO4uMY1vGh9z5zNny10QvoJLr6hkKcKyOWzv1rh"
                   clientKey:@"MyhVgzH7FW7BMHAqjNfZyAeRGCxceNcd0uyOXU3B"];
     
+    //facebook login
     [PFFacebookUtils initializeFacebook];
     
     
@@ -33,7 +34,12 @@
 // ****************************************************************************
 // App switching methods to support Facebook Single Sign-On.
 // ****************************************************************************
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [PFFacebookUtils handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [PFFacebookUtils handleOpenURL:url];
 }
 
