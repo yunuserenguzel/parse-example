@@ -18,8 +18,8 @@
     
     // Bu satırda parse config ayarları yapılır.
     
-    [Parse setApplicationId:@"InO4uMY1vGh9z5zNny10QvoJLr6hkKcKyOWzv1rh"
-                  clientKey:@"MyhVgzH7FW7BMHAqjNfZyAeRGCxceNcd0uyOXU3B"];
+    [Parse setApplicationId:@"<aplicatoin ıd yazınız.>"
+                  clientKey:@"<client idinizi buraya yazızınız.>"];
     
     //facebook login
     [PFFacebookUtils initializeFacebook];

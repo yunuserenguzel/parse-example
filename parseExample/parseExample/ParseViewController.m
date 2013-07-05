@@ -54,7 +54,7 @@
         // Customize the Sign Up View Controller
         MySignUpViewController *signUpViewController = [[MySignUpViewController alloc] init];
         signUpViewController.delegate = self;
-        signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
+        signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsDismissButton | PFSignUpFieldsAdditional;
         logInViewController.signUpController = signUpViewController;
         
         // Present Log In View Controller
@@ -72,6 +72,7 @@
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
     if (username && password && username.length && password.length) {
+        
         return YES;
     }
     
@@ -217,8 +218,6 @@
         // Log details of the failure
         NSLog(@"Error: %@ %@", error, [error userInfo]);
     }
-    
-    
     
 }
 - (void)getCallback:(PFObject *)deleteTodo error:(NSError *)error {

@@ -40,14 +40,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb138425806363137</string>
+				<string>&lt;fb+facebookID yazılacak.&gt;</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>FacebookAppID</key>
-	<string>138425806363137</string>
+	<string>&lt;facebookID yazılacak&gt;</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
